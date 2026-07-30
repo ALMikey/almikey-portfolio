@@ -19,3 +19,9 @@ assert.doesNotMatch(stylesheet, /repeating-linear-gradient/, 'Control-room styli
 const featuredProjectRule = stylesheet.match(/\.project-card-featured\s*\{[^}]*\}/s)?.[0] ?? '';
 assert.doesNotMatch(featuredProjectRule, /background\s*:/, 'The featured project card must inherit the same transparency as other project cards.');
 assert.doesNotMatch(stylesheet, /\.project-card-featured:hover\s*\{/, 'The featured project card must inherit the standard hover transparency.');
+
+const contactCardRule = stylesheet.match(/\.contact-link\s*\{[^}]*\}/s)?.[0] ?? '';
+const contactCardHoverRule = stylesheet.match(/\.contact-link:hover\s*\{[^}]*\}/s)?.[0] ?? '';
+assert.match(contactCardRule, /background:\s*rgba\(26, 33, 25, \.78\);/, 'Contact cards must use the project-card transparency.');
+assert.match(contactCardRule, /border:\s*1px solid #40503c;/, 'Contact cards must use the project-card border.');
+assert.match(contactCardHoverRule, /transform:\s*translateY\(-7px\);/, 'Contact cards must use the project-card hover lift.');
