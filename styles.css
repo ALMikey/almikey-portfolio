@@ -605,12 +605,7 @@ h2 {
 }
 
 .project-card-featured {
-  background: #354c26;
   border-color: #6c9445;
-}
-
-.project-card-featured:hover {
-  background: #3d592c;
 }
 
 .project-record-toggle {

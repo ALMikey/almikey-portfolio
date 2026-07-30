@@ -15,3 +15,7 @@ assert.match(script, /toggle\.setAttribute\('aria-expanded', String\(isExpanded\
 assert.match(stylesheet, /\.system-hud\s*\{[\s\S]*position:\s*fixed/s);
 assert.match(stylesheet, /\.project-record:not\(\[hidden\]\)/);
 assert.doesNotMatch(stylesheet, /repeating-linear-gradient/, 'Control-room styling must not add scanline or pixel-noise textures.');
+
+const featuredProjectRule = stylesheet.match(/\.project-card-featured\s*\{[^}]*\}/s)?.[0] ?? '';
+assert.doesNotMatch(featuredProjectRule, /background\s*:/, 'The featured project card must inherit the same transparency as other project cards.');
+assert.doesNotMatch(stylesheet, /\.project-card-featured:hover\s*\{/, 'The featured project card must inherit the standard hover transparency.');
