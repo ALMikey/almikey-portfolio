@@ -26,12 +26,33 @@ const hero = document.querySelector('.hero');
 const moduleSwitcherLinks = document.querySelectorAll('.module-switcher a');
 const switcherSections = document.querySelectorAll('main > section[id]');
 const switcherVisibility = new Map();
+const hudIndex = document.querySelector('[data-hud-index]');
+const hudLabel = document.querySelector('[data-hud-label]');
+const projectToggles = document.querySelectorAll('[data-project-toggle]');
 
 const setCurrentModule = (id) => {
   moduleSwitcherLinks.forEach((link) => {
     link.classList.toggle('is-current', link.hash === `#${id}`);
   });
+
+  const section = document.getElementById(id);
+  if (section) {
+    hudIndex.textContent = section.dataset.chapter;
+    hudLabel.textContent = section.dataset.label;
+  }
 };
+
+projectToggles.forEach((toggle) => {
+  const record = document.getElementById(toggle.getAttribute('aria-controls'));
+  if (!record) return;
+
+  toggle.addEventListener('click', () => {
+    const isExpanded = toggle.getAttribute('aria-expanded') === 'false';
+    toggle.setAttribute('aria-expanded', String(isExpanded));
+    toggle.textContent = isExpanded ? '收起档案' : '查看档案';
+    record.hidden = !isExpanded;
+  });
+});
 
 revealTargets.forEach((element, index) => {
   element.classList.add('reveal');

@@ -1,227 +1,262 @@
 <!doctype html>
 <html lang="zh-CN">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="ALMikey - Minecraft 服务器开发者，专注插件生态、原版机制与玩法实现。"
-    />
-    <title>ALMikey | Minecraft 服务器开发者</title>
-    <link rel="icon" type="image/png" href="assets/ALMikey_Hedd.png" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <header class="site-header">
-      <a class="brand" href="#top" aria-label="ALMikey 首页">
-        <img class="brand-avatar" src="assets/almikey-nav-avatar.png" alt="" />
-        <span class="brand-word">ALMIKEY</span><span>/</span>
-      </a>
-      <button class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">
-        <i data-lucide="menu"></i>
-      </button>
-      <nav class="site-nav" aria-label="主导航">
-        <a href="#capabilities">能力</a>
-        <a href="#mechanics">技术范围</a>
-        <a href="#projects">项目</a>
-        <a class="nav-contact" href="#contact">联系</a>
-      </nav>
-    </header>
 
-    <nav class="module-switcher" aria-label="模块切换">
-      <a class="is-current" href="#home"><span>00</span><b>首页</b></a>
-      <a href="#capabilities"><span>01</span><b>能力</b></a>
-      <a href="#mechanics"><span>02</span><b>技术</b></a>
-      <a href="#projects"><span>03</span><b>项目</b></a>
-      <a href="#contact"><span>04</span><b>联系</b></a>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ALMikey - Minecraft 服务器开发者，专注插件生态、原版机制与玩法实现。" />
+  <title>ALMikey | Minecraft 服务器开发者</title>
+  <link rel="icon" type="image/png" href="assets/ALMikey_Hedd.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="ALMikey 首页">
+      <img class="brand-avatar" src="assets/almikey-nav-avatar.png" alt="" />
+      <span class="brand-word">ALMIKEY</span><span>/</span>
+    </a>
+    <button class="menu-toggle" type="button" aria-label="打开导航菜单" aria-expanded="false">
+      <i data-lucide="menu"></i>
+    </button>
+    <nav class="site-nav" aria-label="主导航">
+      <a href="#capabilities">能力</a>
+      <a href="#mechanics">技术范围</a>
+      <a href="#projects">项目</a>
+      <a class="nav-contact" href="#contact">联系</a>
     </nav>
+  </header>
 
-    <main id="top">
-      <section class="hero" id="home" aria-labelledby="hero-title">
-        <div class="hero-shade"></div>
-        <div class="hero-grid" aria-hidden="true"></div>
-        <div class="container hero-content">
-          <p class="eyebrow"><span></span>Minecraft Server Development</p>
-          <h1 id="hero-title">ALMikey</h1>
-          <p class="hero-lead">Minecraft 服务器开发者</p>
-          <p class="hero-copy">
-            让技术服务于每一次进入服务器的体验。从插件生态到原版机制，把服务端能力转化为稳定、可玩且易于维护的游戏体验。
-          </p>
-          <div class="hero-actions">
-            <a class="button button-primary" href="#capabilities">
-              查看能力
-              <i data-lucide="arrow-down-right"></i>
-            </a>
-            <a class="button button-quiet" href="#projects">参与项目</a>
-          </div>
-        </div>
-        <div class="hero-status" aria-label="当前专注方向">
-          <span>当前专注</span>
-          <strong>服务端玩法与原版扩展</strong>
-        </div>
-      </section>
+  <nav class="module-switcher" aria-label="模块切换">
+    <a class="is-current" href="#home"><span>00</span><b>首页</b></a>
+    <a href="#capabilities"><span>01</span><b>能力</b></a>
+    <a href="#mechanics"><span>02</span><b>技术</b></a>
+    <a href="#projects"><span>03</span><b>项目</b></a>
+    <a href="#contact"><span>04</span><b>联系</b></a>
+  </nav>
 
-      <section class="section capabilities visual-section" id="capabilities" aria-labelledby="capabilities-title">
-        <div class="container">
-          <div class="section-heading">
-            <div>
-              <p class="section-kicker">01 / CAPABILITIES</p>
-              <h2 id="capabilities-title">插件与服务端能力</h2>
-            </div>
-            <p>以清晰的技术边界和稳定的交付，支撑服务器从日常运行到复杂玩法的演进。</p>
-          </div>
-          <div class="skill-list">
-            <article class="skill-row">
-              <div class="skill-label"><span>01</span><h3>插件选型与整合</h3></div>
-              <p>根据玩法目标协调依赖、配置与兼容性，建立可持续维护的插件组合。</p>
-              <div class="level"><b>熟练</b><span><i style="width: 88%"></i></span></div>
-            </article>
-            <article class="skill-row">
-              <div class="skill-label"><span>02</span><h3>配置与系统定制</h3></div>
-              <p>围绕经济、权限、任务和玩法系统进行细致配置与联动设计。</p>
-              <div class="level"><b>熟练</b><span><i style="width: 85%"></i></span></div>
-            </article>
-            <article class="skill-row">
-              <div class="skill-label"><span>03</span><h3>问题定位与调优</h3></div>
-              <p>从运行表现出发排查冲突、性能瓶颈与异常，降低线上维护成本。</p>
-              <div class="level"><b>进阶</b><span><i style="width: 76%"></i></span></div>
-            </article>
-            <article class="skill-row">
-              <div class="skill-label"><span>04</span><h3>玩法功能落地</h3></div>
-              <p>将规则、流程与交互细化为可测试的服务器功能和玩家反馈。</p>
-              <div class="level"><b>进阶</b><span><i style="width: 78%"></i></span></div>
-            </article>
-          </div>
-        </div>
-      </section>
+  <aside class="system-hud" aria-hidden="true">
+    <p class="system-hud-status"><span></span>SERVER PROFILE / ONLINE</p>
+    <div class="system-hud-chapter"><span data-hud-index>00</span><b data-hud-label>HOME / PROFILE</b></div>
+    <div class="system-hud-scan"><i></i></div>
+  </aside>
 
-      <section class="section projects visual-section" id="projects" aria-labelledby="projects-title">
-        <div class="container">
-          <div class="section-heading section-heading-light">
-            <div>
-              <p class="section-kicker">03 / PROJECTS</p>
-              <h2 id="projects-title">参与项目</h2>
-            </div>
-            <p>覆盖玩法系统、原版扩展与资源表现等方向。项目名称和成果可在公开后补充至对应档案。</p>
-          </div>
-          <div class="project-grid">
-            <article class="project-card project-card-featured">
-              <div class="project-topline"><span>SERVER SYSTEM</span><i data-lucide="blocks"></i></div>
-              <div>
-                <p class="project-number">01</p>
-                <h3>服务器玩法系统</h3>
-                <p>围绕多人协作、流程配置与长期运营所参与的服务端系统建设。</p>
-              </div>
-              <div class="project-tags"><span>插件整合</span><span>玩法规则</span><span>维护支持</span></div>
-            </article>
-            <article class="project-card">
-              <div class="project-topline"><span>VANILLA EXTENSION</span><i data-lucide="box"></i></div>
-              <div>
-                <p class="project-number">02</p>
-                <h3>原版扩展数据包</h3>
-                <p>通过数据包拓展原版逻辑，使新内容仍保持原版语境与体验。</p>
-              </div>
-              <div class="project-tags"><span>数据包</span><span>函数逻辑</span></div>
-            </article>
-            <article class="project-card">
-              <div class="project-topline"><span>RESOURCE EXPERIENCE</span><i data-lucide="palette"></i></div>
-              <div>
-                <p class="project-number">03</p>
-                <h3>资源包表现整合</h3>
-                <p>让模型、纹理与服务端机制配合，为玩法建立统一的视觉表达。</p>
-              </div>
-              <div class="project-tags"><span>资源包</span><span>模型纹理</span></div>
-            </article>
-          </div>
+  <main id="top">
+    <section class="hero" id="home" aria-labelledby="hero-title" data-chapter="00" data-label="HOME / PROFILE">
+      <div class="hero-shade"></div>
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="container hero-content">
+        <p class="eyebrow"><span></span>Minecraft Server Development</p>
+        <h1 id="hero-title">ALMikey</h1>
+        <p class="hero-lead">Minecraft 服务器开发者</p>
+        <p class="hero-copy">
+          让技术服务于每一次进入服务器的体验。从插件生态到原版机制，把服务端能力转化为稳定、可玩且易于维护的游戏体验。
+        </p>
+        <div class="hero-actions">
+          <a class="button button-primary" href="#capabilities">
+            查看能力
+            <i data-lucide="arrow-down-right"></i>
+          </a>
+          <a class="button button-quiet" href="#projects">参与项目</a>
         </div>
-      </section>
+      </div>
+      <div class="hero-status" aria-label="当前专注方向">
+        <span>当前专注</span>
+        <strong>服务端玩法与原版扩展</strong>
+      </div>
+    </section>
 
-      <section class="section mechanics visual-section" id="mechanics" aria-labelledby="mechanics-title">
-        <div class="container mechanics-layout">
-          <div class="mechanics-intro">
-            <p class="section-kicker">02 / TECHNICAL RANGE</p>
-            <h2 id="mechanics-title">理解原版，<br />也理解运行环境。</h2>
-            <p>在原版系统、资源表现与服务器操作系统之间建立连贯的开发视角。</p>
-          </div>
-          <div class="mechanics-groups">
-            <article class="mechanics-group">
-              <div class="group-icon group-icon-green"><i data-lucide="hammer"></i></div>
-              <div>
-                <p class="group-title">原版机制</p>
-                <ul>
-                  <li>数据包与函数系统</li>
-                  <li>命令逻辑与记分板</li>
-                  <li>战利品表与配方</li>
-                  <li>实体、物品与方块行为</li>
-                </ul>
-              </div>
-            </article>
-            <article class="mechanics-group">
-              <div class="group-icon group-icon-gold"><i data-lucide="layers-3"></i></div>
-              <div>
-                <p class="group-title">资源表现</p>
-                <ul>
-                  <li>资源包结构与加载</li>
-                  <li>模型、纹理与音效关联</li>
-                  <li>CustomModelData 应用</li>
-                  <li>玩法视觉一致性</li>
-                </ul>
-              </div>
-            </article>
-            <article class="mechanics-group">
-              <div class="group-icon group-icon-coral"><i data-lucide="terminal"></i></div>
-              <div>
-                <p class="group-title">操作系统</p>
-                <ul>
-                  <li>Linux 服务端部署</li>
-                  <li>Windows 本地开发与测试</li>
-                  <li>运行环境与文件管理</li>
-                  <li>日志查看与日常维护</li>
-                </ul>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="contact section visual-section" id="contact" aria-labelledby="contact-title">
-        <div class="container contact-layout">
+    <section class="section capabilities visual-section" id="capabilities" aria-labelledby="capabilities-title" data-chapter="01" data-label="CAPABILITIES">
+      <div class="container">
+        <div class="section-heading">
           <div>
-            <p class="section-kicker">04 / CONTACT</p>
-            <h2 id="contact-title">聊聊你的<br />下一台服务器。</h2>
+            <p class="section-kicker">01 / CAPABILITIES</p>
+            <h2 id="capabilities-title">插件与服务端能力</h2>
           </div>
-          <div class="contact-panel">
-            <p>可通过以下渠道联系 ALMikey，交流服务器开发、玩法实现或项目协作。</p>
-            <div class="contact-grid">
-              <a class="contact-link" href="mailto:your-email@example.com" aria-label="发送邮件">
-                <i data-lucide="mail"></i><span>邮箱</span><b>待补充</b><i class="contact-arrow" data-lucide="arrow-up-right"></i>
-              </a>
-              <a class="contact-link" href="#contact" aria-label="微信联系方式待补充">
-                <i data-lucide="messages-square"></i><span>微信</span><b>待补充</b><i class="contact-arrow" data-lucide="arrow-up-right"></i>
-              </a>
-              <a class="contact-link" href="#contact" aria-label="QQ 联系方式待补充">
-                <i data-lucide="message-circle"></i><span>QQ</span><b>待补充</b><i class="contact-arrow" data-lucide="arrow-up-right"></i>
-              </a>
-              <a class="contact-link" href="#contact" aria-label="Discord 联系方式待补充">
-                <i data-lucide="gamepad-2"></i><span>Discord</span><b>待补充</b><i class="contact-arrow" data-lucide="arrow-up-right"></i>
-              </a>
+          <p>以清晰的技术边界和稳定的交付，支撑服务器从日常运行到复杂玩法的演进。</p>
+        </div>
+        <div class="skill-list">
+          <article class="skill-row">
+            <div class="skill-label"><span>01</span>
+              <h3>插件选型与整合</h3>
             </div>
+            <p>根据玩法目标协调依赖、配置与兼容性，建立可持续维护的插件组合。</p>
+            <div class="level"><b>熟练</b><span><i style="width: 88%"></i></span></div>
+          </article>
+          <article class="skill-row">
+            <div class="skill-label"><span>02</span>
+              <h3>配置与系统定制</h3>
+            </div>
+            <p>围绕经济、权限、任务和玩法系统进行细致配置与联动设计。</p>
+            <div class="level"><b>熟练</b><span><i style="width: 85%"></i></span></div>
+          </article>
+          <article class="skill-row">
+            <div class="skill-label"><span>03</span>
+              <h3>问题定位与调优</h3>
+            </div>
+            <p>从运行表现出发排查冲突、性能瓶颈与异常，降低线上维护成本。</p>
+            <div class="level"><b>进阶</b><span><i style="width: 76%"></i></span></div>
+          </article>
+          <article class="skill-row">
+            <div class="skill-label"><span>04</span>
+              <h3>玩法功能落地</h3>
+            </div>
+            <p>将规则、流程与交互细化为可测试的服务器功能和玩家反馈。</p>
+            <div class="level"><b>进阶</b><span><i style="width: 78%"></i></span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section projects visual-section" id="projects" aria-labelledby="projects-title" data-chapter="03" data-label="PROJECT ARCHIVE">
+      <div class="container">
+        <div class="section-heading section-heading-light">
+          <div>
+            <p class="section-kicker">03 / PROJECTS</p>
+            <h2 id="projects-title">参与项目</h2>
+          </div>
+          <p>覆盖玩法系统、原版扩展与资源表现等方向。项目名称和成果可在公开后补充至对应档案。</p>
+        </div>
+        <div class="project-grid">
+          <article class="project-card project-card-featured">
+            <div class="project-topline"><span>SERVER SYSTEM</span><i data-lucide="blocks"></i></div>
+            <div>
+              <p class="project-number">01</p>
+              <h3>服务器玩法系统</h3>
+              <p>围绕多人协作、流程配置与长期运营所参与的服务端系统建设。</p>
+            </div>
+            <div class="project-tags"><span>插件整合</span><span>玩法规则</span><span>维护支持</span></div>
+            <button class="project-record-toggle" type="button" data-project-toggle aria-expanded="false" aria-controls="project-record-1">查看档案</button>
+            <div class="project-record" id="project-record-1" hidden>
+              <p><span>ROLE</span>玩法系统参与与插件协同</p>
+              <p><span>STACK</span>插件配置、权限、经济与任务链路</p>
+              <p><span>FOCUS</span>降低维护复杂度，保持玩法规则清晰可扩展</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-topline"><span>VANILLA EXTENSION</span><i data-lucide="box"></i></div>
+            <div>
+              <p class="project-number">02</p>
+              <h3>原版扩展数据包</h3>
+              <p>通过数据包拓展原版逻辑，使新内容仍保持原版语境与体验。</p>
+            </div>
+            <div class="project-tags"><span>数据包</span><span>函数逻辑</span></div>
+            <button class="project-record-toggle" type="button" data-project-toggle aria-expanded="false" aria-controls="project-record-2">查看档案</button>
+            <div class="project-record" id="project-record-2" hidden>
+              <p><span>ROLE</span>原版逻辑规划与函数系统实现</p>
+              <p><span>STACK</span>命令、记分板、战利品表与配方</p>
+              <p><span>FOCUS</span>让拓展内容保持原版语境与可维护性</p>
+            </div>
+          </article>
+          <article class="project-card">
+            <div class="project-topline"><span>RESOURCE EXPERIENCE</span><i data-lucide="palette"></i></div>
+            <div>
+              <p class="project-number">03</p>
+              <h3>资源包表现整合</h3>
+              <p>让模型、纹理与服务端机制配合，为玩法建立统一的视觉表达。</p>
+            </div>
+            <div class="project-tags"><span>资源包</span><span>模型纹理</span></div>
+            <button class="project-record-toggle" type="button" data-project-toggle aria-expanded="false" aria-controls="project-record-3">查看档案</button>
+            <div class="project-record" id="project-record-3" hidden>
+              <p><span>ROLE</span>资源表现与服务端机制协同</p>
+              <p><span>STACK</span>模型、纹理、音效与 CustomModelData</p>
+              <p><span>FOCUS</span>为功能建立一致、可识别的视觉反馈</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section mechanics visual-section" id="mechanics" aria-labelledby="mechanics-title" data-chapter="02" data-label="TECHNICAL RANGE">
+      <div class="container mechanics-layout">
+        <div class="mechanics-intro">
+          <p class="section-kicker">02 / TECHNICAL RANGE</p>
+          <h2 id="mechanics-title">理解原版，<br />也理解运行环境。</h2>
+          <p>在原版系统、资源表现与服务器操作系统之间建立连贯的开发视角。</p>
+        </div>
+        <div class="mechanics-groups">
+          <article class="mechanics-group">
+            <div class="group-icon group-icon-green"><i data-lucide="hammer"></i></div>
+            <div>
+              <p class="group-title">原版机制</p>
+              <ul>
+                <li>数据包与函数系统</li>
+                <li>命令逻辑与记分板</li>
+                <li>战利品表与配方</li>
+                <li>实体、物品与方块行为</li>
+              </ul>
+            </div>
+          </article>
+          <article class="mechanics-group">
+            <div class="group-icon group-icon-gold"><i data-lucide="layers-3"></i></div>
+            <div>
+              <p class="group-title">资源表现</p>
+              <ul>
+                <li>资源包结构与加载</li>
+                <li>模型、纹理与音效关联</li>
+                <li>CustomModelData 应用</li>
+                <li>玩法视觉一致性</li>
+              </ul>
+            </div>
+          </article>
+          <article class="mechanics-group">
+            <div class="group-icon group-icon-coral"><i data-lucide="terminal"></i></div>
+            <div>
+              <p class="group-title">操作系统</p>
+              <ul>
+                <li>Linux 服务端部署</li>
+                <li>Windows 本地开发与测试</li>
+                <li>运行环境与文件管理</li>
+                <li>日志查看与日常维护</li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact section visual-section" id="contact" aria-labelledby="contact-title" data-chapter="04" data-label="CONTACT CHANNEL">
+      <div class="container contact-layout">
+        <div>
+          <p class="section-kicker">04 / CONTACT</p>
+          <h2 id="contact-title">聊聊你的<br />下一台服务器。</h2>
+        </div>
+        <div class="contact-panel">
+          <p>可通过以下渠道联系 ALMikey，交流服务器开发、玩法实现或项目协作。</p>
+          <div class="contact-grid">
+            <a class="contact-link" href="mailto:your-email@example.com" aria-label="发送邮件">
+              <i data-lucide="mail"></i><span>邮箱</span><b>待补充</b><i class="contact-arrow"
+                data-lucide="arrow-up-right"></i>
+            </a>
+            <a class="contact-link" href="#contact" aria-label="微信联系方式待补充">
+              <i data-lucide="messages-square"></i><span>微信</span><b>待补充</b><i class="contact-arrow"
+                data-lucide="arrow-up-right"></i>
+            </a>
+            <a class="contact-link" href="#contact" aria-label="QQ 联系方式待补充">
+              <i data-lucide="message-circle"></i><span>QQ</span><b>待补充</b><i class="contact-arrow"
+                data-lucide="arrow-up-right"></i>
+            </a>
+            <a class="contact-link" href="#contact" aria-label="Discord 联系方式待补充">
+              <i data-lucide="gamepad-2"></i><span>Discord</span><b>待补充</b><i class="contact-arrow"
+                data-lucide="arrow-up-right"></i>
+            </a>
           </div>
         </div>
-      </section>
-    </main>
+      </div>
+    </section>
+  </main>
 
-    <footer class="site-footer">
-      <div class="container"><span>ALMIKEY / MINECRAFT SERVER DEVELOPER</span><span>2026</span></div>
-    </footer>
+  <footer class="site-footer">
+    <div class="container"><span>ALMIKEY / MINECRAFT SERVER DEVELOPER</span><span>2026</span></div>
+  </footer>
 
-    <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
-    <script src="app.js"></script>
-  </body>
+  <script src="https://unpkg.com/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+  <script src="app.js"></script>
+</body>
+
 </html>
