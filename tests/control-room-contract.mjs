@@ -13,5 +13,5 @@ assert.match(script, /const hudIndex = document\.querySelector\('\[data-hud-inde
 assert.match(script, /hudIndex\.textContent = section\.dataset\.chapter/);
 assert.match(script, /toggle\.setAttribute\('aria-expanded', String\(isExpanded\)\)/);
 assert.match(stylesheet, /\.system-hud\s*\{[\s\S]*position:\s*fixed/s);
-assert.match(stylesheet, /\.visual-section::before\s*\{[\s\S]*repeating-linear-gradient/s);
 assert.match(stylesheet, /\.project-record:not\(\[hidden\]\)/);
+assert.doesNotMatch(stylesheet, /repeating-linear-gradient/, 'Control-room styling must not add scanline or pixel-noise textures.');
