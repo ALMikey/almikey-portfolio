@@ -16,11 +16,9 @@ assert.match(stylesheet, /\.system-hud\s*\{[\s\S]*position:\s*fixed/s);
 assert.match(stylesheet, /\.project-record:not\(\[hidden\]\)/);
 assert.doesNotMatch(stylesheet, /repeating-linear-gradient/, 'Control-room styling must not add scanline or pixel-noise textures.');
 
-assert.match(html, /class="github-activity"/, 'The contact module must include a GitHub activity component.');
-const githubCells = html.match(/class="github-cell/g) ?? [];
-assert.equal(githubCells.length, 84, 'The GitHub activity component must contain 12 weeks of 7-day cells.');
-assert.match(stylesheet, /\.github-grid\s*\{[\s\S]*grid-template-columns:\s*repeat\(12, 1fr\)/s);
-assert.match(stylesheet, /\.github-cell\.level-4\s*\{[\s\S]*background:\s*var\(--green\)/s);
+assert.match(html, /<a class="contact-link contact-link-github" href="https:\/\/github\.com\/ALMikey"\s+target="_blank" rel="noreferrer" aria-label="打开 ALMikey 的 GitHub 主页">[\s\S]*?<i data-lucide="github"><\/i>[\s\S]*?<span>GitHub<\/span>[\s\S]*?<b>ALMikey<\/b>/, 'The contact module must expose ALMikey\'s GitHub profile as a contact card.');
+assert.doesNotMatch(html, /class="github-activity"/, 'The contact module must not include a GitHub activity heatmap.');
+assert.doesNotMatch(stylesheet, /\.github-grid\s*\{/, 'GitHub activity styles must not remain after replacing the heatmap.');
 
 const featuredProjectRule = stylesheet.match(/\.project-card-featured\s*\{[^}]*\}/s)?.[0] ?? '';
 assert.doesNotMatch(featuredProjectRule, /background\s*:/, 'The featured project card must inherit the same transparency as other project cards.');
