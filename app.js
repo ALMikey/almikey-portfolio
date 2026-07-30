@@ -29,6 +29,7 @@ const switcherVisibility = new Map();
 const hudIndex = document.querySelector('[data-hud-index]');
 const hudLabel = document.querySelector('[data-hud-label]');
 const projectToggles = document.querySelectorAll('[data-project-toggle]');
+const projectCards = document.querySelectorAll('.project-card');
 
 const setCurrentModule = (id) => {
   moduleSwitcherLinks.forEach((link) => {
@@ -53,6 +54,14 @@ projectToggles.forEach((toggle) => {
     toggle.textContent = isExpanded ? '收起档案' : '查看档案';
     record.hidden = !isExpanded;
     projectCard?.classList.toggle('is-selected', isExpanded);
+  });
+});
+
+projectCards.forEach((card) => {
+  card.addEventListener('click', (event) => {
+    if (event.target.closest('button')) return;
+    const projectToggle = card.querySelector('[data-project-toggle]');
+    projectToggle?.click();
   });
 });
 

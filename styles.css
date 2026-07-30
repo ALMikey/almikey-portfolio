@@ -594,6 +594,7 @@ h2 {
   background: rgba(26, 33, 25, .78);
   border: 1px solid #40503c;
   border-radius: 7px;
+  cursor: pointer;
   transition: background .25s ease, transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
 

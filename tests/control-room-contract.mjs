@@ -28,3 +28,5 @@ assert.match(contactCardHoverRule, /transform:\s*translateY\(-7px\);/, 'Contact 
 
 assert.match(script, /projectCard\?\.classList\.toggle\('is-selected', isExpanded\)/, 'Opening a project record must mark its project card as selected.');
 assert.match(stylesheet, /\.project-card\.is-selected\s*\{[\s\S]*transform:\s*translateY\(-7px\) scale\(1\.015\);/s, 'Selected project cards must have a pop-out effect.');
+assert.match(script, /const projectCards = document\.querySelectorAll\('\.project-card'\)/, 'Project cards must expose full-card click handling.');
+assert.match(script, /projectToggle\?\.click\(\)/, 'Clicking a project card must trigger its existing project action.');
