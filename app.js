@@ -44,6 +44,7 @@ const setCurrentModule = (id) => {
 
 projectToggles.forEach((toggle) => {
   const record = document.getElementById(toggle.getAttribute('aria-controls'));
+  const projectCard = toggle.closest('.project-card');
   if (!record) return;
 
   toggle.addEventListener('click', () => {
@@ -51,6 +52,7 @@ projectToggles.forEach((toggle) => {
     toggle.setAttribute('aria-expanded', String(isExpanded));
     toggle.textContent = isExpanded ? '收起档案' : '查看档案';
     record.hidden = !isExpanded;
+    projectCard?.classList.toggle('is-selected', isExpanded);
   });
 });
 
