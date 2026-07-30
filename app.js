@@ -23,6 +23,15 @@ const revealTargets = document.querySelectorAll(
 );
 const moduleTargets = document.querySelectorAll('main > section');
 const hero = document.querySelector('.hero');
+const moduleSwitcherLinks = document.querySelectorAll('.module-switcher a');
+const switcherSections = document.querySelectorAll('main > section[id]');
+const switcherVisibility = new Map();
+
+const setCurrentModule = (id) => {
+  moduleSwitcherLinks.forEach((link) => {
+    link.classList.toggle('is-current', link.hash === `#${id}`);
+  });
+};
 
 revealTargets.forEach((element, index) => {
   element.classList.add('reveal');
@@ -53,6 +62,17 @@ if (!reduceMotion && hero && 'IntersectionObserver' in window) {
   heroObserver.observe(hero);
 } else {
   hero?.classList.add('hero-active');
+}
+
+if ('IntersectionObserver' in window) {
+  const switcherObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => switcherVisibility.set(entry.target.id, entry));
+    const current = [...switcherVisibility.values()]
+      .filter((entry) => entry.isIntersecting)
+      .sort((left, right) => right.intersectionRatio - left.intersectionRatio)[0];
+    if (current) setCurrentModule(current.target.id);
+  }, { rootMargin: '-30% 0px -30% 0px', threshold: [0, .25, .5, .75] });
+  switcherSections.forEach((section) => switcherObserver.observe(section));
 }
 
 if (!reduceMotion && 'IntersectionObserver' in window) {
