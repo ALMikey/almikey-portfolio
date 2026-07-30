@@ -3,6 +3,12 @@ const siteNav = document.querySelector('.site-nav');
 const header = document.querySelector('.site-header');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+const closeMenu = () => {
+  siteNav?.classList.remove('is-open');
+  menuToggle?.setAttribute('aria-expanded', 'false');
+  menuToggle?.setAttribute('aria-label', '打开导航菜单');
+};
+
 menuToggle?.addEventListener('click', () => {
   const isOpen = siteNav.classList.toggle('is-open');
   menuToggle.setAttribute('aria-expanded', String(isOpen));
@@ -11,9 +17,18 @@ menuToggle?.addEventListener('click', () => {
 
 siteNav?.querySelectorAll('a').forEach((link) => {
   link.addEventListener('click', () => {
-    siteNav.classList.remove('is-open');
-    menuToggle?.setAttribute('aria-expanded', 'false');
+    closeMenu();
   });
+});
+
+document.addEventListener('pointerdown', (event) => {
+  if (!siteNav?.classList.contains('is-open')) return;
+  if (siteNav?.contains(event.target) || menuToggle?.contains(event.target)) return;
+  closeMenu();
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeMenu();
 });
 
 const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 18);
