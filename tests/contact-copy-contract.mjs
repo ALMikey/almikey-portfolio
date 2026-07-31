@@ -13,9 +13,12 @@ const expectedContacts = [
   ['Discord', 'ALMikey#7846'],
 ];
 
+const copyTitles = html.match(/title="点击复制"/g) ?? [];
+assert.equal(copyTitles.length, expectedContacts.length, 'Every contact card must expose a click-to-copy title.');
+
 let previousIndex = -1;
 for (const [label, value] of expectedContacts) {
-  const button = new RegExp(`<button class="contact-link" type="button" data-copy="${value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" aria-label="复制 ${label}：${value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}">[\\s\\S]*?<span>${label}</span>[\\s\\S]*?<b>${value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</b>`);
+  const button = new RegExp(`<button class="contact-link" type="button" data-copy="${value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}" aria-label="复制 ${label}：${value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}"[^>]*>[\\s\\S]*?<span>${label}</span>[\\s\\S]*?<b>${value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}</b>`);
   const match = html.match(button);
   assert.ok(match, `${label} must be a copyable contact button.`);
   assert.ok(match.index > previousIndex, `${label} must follow the requested contact order.`);
