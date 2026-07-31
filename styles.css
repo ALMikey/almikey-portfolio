@@ -356,12 +356,12 @@ main {
   font-size: 12px;
 }
 
-.hero .eyebrow,
-.hero h1,
-.hero-lead,
-.hero-copy,
-.hero-actions,
-.hero-status {
+.has-js .hero .eyebrow,
+.has-js .hero h1,
+.has-js .hero-lead,
+.has-js .hero-copy,
+.has-js .hero-actions,
+.has-js .hero-status {
   opacity: 0;
 }
 
@@ -413,7 +413,7 @@ main {
   position: absolute;
   z-index: 0;
   inset: -9% 0;
-  background: var(--section-image) center/cover no-repeat;
+  background: var(--section-image, none) center/cover no-repeat;
   opacity: .8;
   transform: translateY(var(--background-y, 0px)) scale(1.06);
   will-change: transform;
@@ -468,8 +468,7 @@ h2 {
   order: 2;
   z-index: 2;
   color: #fff;
-  background: transparent;
-  --section-image: url("assets/novaskin-wallpaper-chillingwithdog.jpg");
+  background: var(--paper);
   --section-tint: rgba(7, 14, 7, .57);
 }
 
@@ -571,9 +570,8 @@ h2 {
 .projects {
   order: 4;
   z-index: 4;
-  background: transparent;
+  background: var(--paper);
   color: #fff;
-  --section-image: url("assets/novaskin-wallpaper-animals2.jpg");
   --section-tint: rgba(7, 13, 7, .57);
 }
 
@@ -708,8 +706,7 @@ h2 {
   order: 3;
   z-index: 3;
   color: #fff;
-  background: transparent;
-  --section-image: url("assets/novaskin-wallpaper-wolfkillingcreeper.jpg");
+  background: var(--paper);
   --section-tint: rgba(7, 13, 7, .57);
 }
 
@@ -784,7 +781,7 @@ h2 {
 
 .mechanics-group li {
   color: rgba(255, 255, 255, .84);
-  font-size: 15.6px;
+  font-size: 14.04px;
 }
 
 .mechanics-group li::before {
@@ -801,8 +798,7 @@ h2 {
   order: 5;
   z-index: 5;
   color: #fff;
-  background: transparent;
-  --section-image: url("assets/novaskin-wallpaper-computer2.jpg");
+  background: var(--paper);
   --section-tint: rgba(7, 13, 7, .57);
 }
 
@@ -820,6 +816,15 @@ h2 {
   max-width: 460px;
   margin: 0 0 27px;
   color: rgba(255, 255, 255, .84);
+}
+
+.copy-status {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
 }
 
 .contact-grid {

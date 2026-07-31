@@ -33,4 +33,4 @@ assert.doesNotMatch(mechanicBulletRule, /box-shadow\s*:/, 'Technical capability 
 assert.doesNotMatch(mechanicBulletRule, /animation\s*:/, 'Technical capability bullets must not pulse.');
 
 const mechanicItemRule = stylesheet.match(/\.mechanics-group li\s*\{[^}]*\}/s)?.[0] ?? '';
-assert.match(mechanicItemRule, /font-size:\s*15\.6px;/, 'Technical capability labels must be 20% larger.');
+assert.match(mechanicItemRule, /font-size:\s*14\.04px;/, 'Technical capability labels must be 10% smaller than the prior size.');

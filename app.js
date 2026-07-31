@@ -1,12 +1,15 @@
+document.documentElement.classList.add('has-js');
+
 const menuToggle = document.querySelector('.menu-toggle');
 const siteNav = document.querySelector('.site-nav');
 const header = document.querySelector('.site-header');
 const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-const closeMenu = () => {
+const closeMenu = (restoreFocus = false) => {
   siteNav?.classList.remove('is-open');
   menuToggle?.setAttribute('aria-expanded', 'false');
   menuToggle?.setAttribute('aria-label', '打开导航菜单');
+  if (restoreFocus) menuToggle?.focus();
 };
 
 menuToggle?.addEventListener('click', () => {
@@ -28,7 +31,7 @@ document.addEventListener('pointerdown', (event) => {
 });
 
 document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') closeMenu();
+  if (event.key === 'Escape' && siteNav?.classList.contains('is-open')) closeMenu(true);
 });
 
 const updateHeader = () => header?.classList.toggle('is-scrolled', window.scrollY > 18);
@@ -45,6 +48,8 @@ const hudIndex = document.querySelector('[data-hud-index]');
 const hudLabel = document.querySelector('[data-hud-label]');
 const projectToggles = document.querySelectorAll('[data-project-toggle]');
 const copyButtons = document.querySelectorAll('[data-copy]');
+const copyStatus = document.querySelector('[data-copy-status]');
+const deferredBackgroundSections = document.querySelectorAll('[data-background-src]');
 
 const setCurrentModule = (id) => {
   moduleSwitcherLinks.forEach((link) => {
@@ -101,6 +106,7 @@ copyButtons.forEach((copyButton) => {
 
   copyButton.addEventListener('click', async () => {
     const copied = await copyContact(copyButton.dataset.copy);
+    copyStatus.textContent = copied ? '联系方式已复制到剪贴板。' : '复制失败，请手动选择并复制。';
     if (!copied) return;
 
     copyButton.classList.add('is-copied');
@@ -115,6 +121,27 @@ copyButtons.forEach((copyButton) => {
     }, 1500);
   });
 });
+
+const loadSectionBackground = (section) => {
+  const source = section.dataset.backgroundSrc;
+  if (!source || section.dataset.backgroundLoaded === 'true') return;
+
+  section.style.setProperty('--section-image', `url("${source}")`);
+  section.dataset.backgroundLoaded = 'true';
+};
+
+if ('IntersectionObserver' in window) {
+  const backgroundObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      loadSectionBackground(entry.target);
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: '250px 0px' });
+  deferredBackgroundSections.forEach((section) => backgroundObserver.observe(section));
+} else {
+  deferredBackgroundSections.forEach(loadSectionBackground);
+}
 
 revealTargets.forEach((element, index) => {
   element.classList.add('reveal');
