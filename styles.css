@@ -503,7 +503,14 @@ h2 {
   align-items: center;
   padding: 27px 0;
   border-bottom: 1px solid rgba(255, 255, 255, .38);
-  transition: padding .22s ease, background .22s ease;
+  transition: background .22s ease, box-shadow .22s ease;
+}
+
+@media (hover: hover) {
+  .skill-row:hover {
+    background: rgba(166, 230, 92, .12);
+    box-shadow: inset 3px 0 0 var(--green);
+  }
 }
 
 .skill-label {
@@ -537,7 +544,7 @@ h2 {
 }
 
 .level b {
-  font-size: 11px;
+  font-size: 13.2px;
   color: #fff;
 }
 

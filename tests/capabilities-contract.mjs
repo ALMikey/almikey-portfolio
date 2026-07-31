@@ -28,4 +28,9 @@ for (const [index, [number, title, description, level, progress]] of capabilitie
   assert.match(row, new RegExp(`<i style="width: ${progress}"><\\/i>`));
 }
 
-assert.doesNotMatch(stylesheet, /\.skill-row:hover\s*\{/, 'Capability rows must not pop out on hover.');
+const levelLabelRule = stylesheet.match(/\.level b\s*\{[^}]*\}/s)?.[0] ?? '';
+const skillHoverRule = stylesheet.match(/\.skill-row:hover\s*\{[^}]*\}/s)?.[0] ?? '';
+assert.match(levelLabelRule, /font-size:\s*13\.2px;/, 'Capability level labels must be 20% larger.');
+assert.match(skillHoverRule, /background:\s*rgba\(166, 230, 92, \.12\);/, 'Capability rows must show a selected-state highlight on hover.');
+assert.match(skillHoverRule, /box-shadow:\s*inset 3px 0 0 var\(--green\);/, 'Capability rows must show a selected-state accent on hover.');
+assert.doesNotMatch(skillHoverRule, /transform\s*:/, 'Capability rows must not pop out on hover.');
