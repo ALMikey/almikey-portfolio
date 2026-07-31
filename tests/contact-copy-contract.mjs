@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const script = readFileSync(new URL('../app.js', import.meta.url), 'utf8');
+const stylesheet = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
 
 const expectedContacts = [
   ['QQ', '926431686'],
@@ -24,3 +25,7 @@ for (const [label, value] of expectedContacts) {
 assert.match(script, /const copyButtons = document\.querySelectorAll\('\[data-copy\]'\)/);
 assert.match(script, /navigator\.clipboard\.writeText/);
 assert.match(script, /copyButton\.classList\.add\('is-copied'\)/);
+
+const contactValueRule = stylesheet.match(/\.contact-link b\s*\{[^}]*\}/s)?.[0] ?? '';
+assert.match(contactValueRule, /align-self:\s*center;/, 'Contact values must move away from the card bottom.');
+assert.match(contactValueRule, /transform:\s*translateY\(-40%\);/, 'Contact values must shift upward by 40%.');

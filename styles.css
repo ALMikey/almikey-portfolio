@@ -870,8 +870,9 @@ h2 {
 
 .contact-link b {
   grid-column: 2;
-  align-self: end;
+  align-self: center;
   overflow-wrap: anywhere;
+  transform: translateY(-40%);
   font: 500 11px var(--mono);
   color: rgba(255, 255, 255, .72);
 }
