@@ -26,8 +26,10 @@ assert.doesNotMatch(html, /project-card-featured/, 'The first project card must 
 
 const projectToplineRule = stylesheet.match(/\.project-topline\s*\{[^}]*\}/s)?.[0] ?? '';
 const projectTagRule = stylesheet.match(/\.project-tags span\s*\{[^}]*\}/s)?.[0] ?? '';
+const projectRecordToggleRule = stylesheet.match(/\.project-record-toggle\s*\{[^}]*\}/s)?.[0] ?? '';
 assert.match(projectToplineRule, /font:\s*500 13px var\(--mono\);/, 'Project category labels must be 30% larger.');
 assert.match(projectTagRule, /font:\s*500 13px var\(--mono\);/, 'Project technology tags must be 30% larger.');
+assert.match(projectRecordToggleRule, /font:\s*500 12px var\(--mono\);/, 'Project record toggles must be 20% larger.');
 
 const contactCardRule = stylesheet.match(/\.contact-link\s*\{[^}]*\}/s)?.[0] ?? '';
 const contactCardHoverRule = stylesheet.match(/\.contact-link:hover\s*\{[^}]*\}/s)?.[0] ?? '';
