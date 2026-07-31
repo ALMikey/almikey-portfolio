@@ -30,9 +30,11 @@ for (const [index, [number, title, description, level, progress]] of capabilitie
 
 const levelLabelRule = stylesheet.match(/\.level b\s*\{[^}]*\}/s)?.[0] ?? '';
 const skillRowRule = stylesheet.match(/\.skill-row\s*\{[^}]*\}/s)?.[0] ?? '';
+const skillDescriptionRule = stylesheet.match(/\.skill-row>p\s*\{[^}]*\}/s)?.[0] ?? '';
 const skillHoverRule = stylesheet.match(/\.skill-row:hover\s*\{[^}]*\}/s)?.[0] ?? '';
 assert.match(levelLabelRule, /font-size:\s*13\.2px;/, 'Capability level labels must be 20% larger.');
 assert.match(skillRowRule, /padding-inline:\s*14px;/, 'Capability rows must keep text clear of the hover accent.');
+assert.match(skillDescriptionRule, /text-align:\s*center;/, 'Capability descriptions must be centered within their column.');
 assert.match(skillHoverRule, /background:\s*rgba\(166, 230, 92, \.12\);/, 'Capability rows must show a selected-state highlight on hover.');
 assert.match(skillHoverRule, /box-shadow:\s*inset 3px 0 0 var\(--green\);/, 'Capability rows must show a selected-state accent on hover.');
 assert.doesNotMatch(skillHoverRule, /transform\s*:/, 'Capability rows must not pop out on hover.');
