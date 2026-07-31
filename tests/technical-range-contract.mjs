@@ -10,7 +10,7 @@ assert.match(mechanicsSection, /<h2 id="mechanics-title">技术能力<\/h2>/);
 const groups = [
   ['原版机制', ['Minecraft 数据包', 'Minecraft 资源包', 'Minecraft 机制与特性']],
   ['插件开发', ['Bukkit', 'Spigot', 'PaperMc', 'FoliaMc']],
-  ['数据库操作', ['MySql/MariaDB', 'Mongodb', 'Redis']],
+  ['数据库操作', ['MySql/MariaDB', 'MongoDB', 'Redis']],
   ['操作系统', ['Windows server', 'Linux/发行版', '各类面板服务器']],
   ['Git与版本控制', ['Git 基础操作', 'GitHub 仓库管理', 'Pull Request 协作流程']],
 ];
@@ -29,5 +29,8 @@ for (const [index, [title, items]] of groups.entries()) {
 const mechanicBulletRule = stylesheet.match(/\.mechanics-group li::before\s*\{[^}]*\}/s)?.[0] ?? '';
 assert.match(mechanicBulletRule, /content:\s*"";/, 'Technical capability bullets must render as indicators rather than punctuation.');
 assert.match(mechanicBulletRule, /background:\s*var\(--green\);/, 'Technical capability bullets must use the hero indicator color.');
-assert.match(mechanicBulletRule, /box-shadow:\s*0 0 0 3px rgba\(166, 230, 92, \.18\);/, 'Technical capability bullets must use the hero indicator glow.');
-assert.match(mechanicBulletRule, /animation:\s*indicator-pulse 1\.8s ease-in-out infinite;/, 'Technical capability bullets must pulse like the hero indicator.');
+assert.doesNotMatch(mechanicBulletRule, /box-shadow\s*:/, 'Technical capability bullets must not glow.');
+assert.doesNotMatch(mechanicBulletRule, /animation\s*:/, 'Technical capability bullets must not pulse.');
+
+const mechanicItemRule = stylesheet.match(/\.mechanics-group li\s*\{[^}]*\}/s)?.[0] ?? '';
+assert.match(mechanicItemRule, /font-size:\s*15\.6px;/, 'Technical capability labels must be 20% larger.');

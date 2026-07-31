@@ -784,7 +784,7 @@ h2 {
 
 .mechanics-group li {
   color: rgba(255, 255, 255, .84);
-  font-size: 13px;
+  font-size: 15.6px;
 }
 
 .mechanics-group li::before {
@@ -795,8 +795,6 @@ h2 {
   margin-right: 9px;
   vertical-align: middle;
   background: var(--green);
-  box-shadow: 0 0 0 3px rgba(166, 230, 92, .18);
-  animation: indicator-pulse 1.8s ease-in-out infinite;
 }
 
 .contact {
