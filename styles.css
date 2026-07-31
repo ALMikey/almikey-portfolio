@@ -502,6 +502,7 @@ h2 {
   gap: 35px;
   align-items: center;
   padding: 27px 0;
+  padding-inline: 14px;
   border-bottom: 1px solid rgba(255, 255, 255, .38);
   transition: background .22s ease, box-shadow .22s ease;
 }
@@ -1145,7 +1146,7 @@ h2 {
   .skill-row {
     grid-template-columns: 1fr;
     gap: 13px;
-    padding: 22px 0;
+    padding: 22px 14px;
   }
 
   .level {
