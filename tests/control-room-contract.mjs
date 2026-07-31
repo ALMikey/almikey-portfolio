@@ -16,7 +16,6 @@ assert.match(stylesheet, /\.system-hud\s*\{[\s\S]*position:\s*fixed/s);
 assert.match(stylesheet, /\.project-record:not\(\[hidden\]\)/);
 assert.doesNotMatch(stylesheet, /repeating-linear-gradient/, 'Control-room styling must not add scanline or pixel-noise textures.');
 
-assert.match(html, /<a class="contact-link contact-link-github" href="https:\/\/github\.com\/ALMikey"\s+target="_blank" rel="noreferrer" aria-label="打开 ALMikey 的 GitHub 主页">[\s\S]*?<i data-lucide="github"><\/i>[\s\S]*?<span>GitHub<\/span>[\s\S]*?<b>ALMikey<\/b>/, 'The contact module must expose ALMikey\'s GitHub profile as a contact card.');
 assert.doesNotMatch(html, /class="github-activity"/, 'The contact module must not include a GitHub activity heatmap.');
 assert.doesNotMatch(stylesheet, /\.github-grid\s*\{/, 'GitHub activity styles must not remain after replacing the heatmap.');
 

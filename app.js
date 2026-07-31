@@ -44,6 +44,7 @@ const switcherVisibility = new Map();
 const hudIndex = document.querySelector('[data-hud-index]');
 const hudLabel = document.querySelector('[data-hud-label]');
 const projectToggles = document.querySelectorAll('[data-project-toggle]');
+const copyButtons = document.querySelectorAll('[data-copy]');
 
 const setCurrentModule = (id) => {
   moduleSwitcherLinks.forEach((link) => {
@@ -68,6 +69,50 @@ projectToggles.forEach((toggle) => {
     toggle.textContent = isExpanded ? '收起档案' : '查看档案';
     record.hidden = !isExpanded;
     projectCard?.classList.toggle('is-selected', isExpanded);
+  });
+});
+
+const copyContact = async (value) => {
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(value);
+      return true;
+    }
+  } catch {
+    // Fall through to the legacy copy method for contexts without clipboard permission.
+  }
+
+  const textarea = document.createElement('textarea');
+  textarea.value = value;
+  textarea.setAttribute('readonly', '');
+  textarea.style.position = 'fixed';
+  textarea.style.opacity = '0';
+  document.body.append(textarea);
+  textarea.select();
+  const copied = document.execCommand('copy');
+  textarea.remove();
+  return copied;
+};
+
+copyButtons.forEach((copyButton) => {
+  const valueLabel = copyButton.querySelector('b');
+  const originalValue = valueLabel?.textContent;
+  let resetTimer;
+
+  copyButton.addEventListener('click', async () => {
+    const copied = await copyContact(copyButton.dataset.copy);
+    if (!copied) return;
+
+    copyButton.classList.add('is-copied');
+    copyButton.setAttribute('aria-label', `已复制：${copyButton.dataset.copy}`);
+    if (valueLabel) valueLabel.textContent = '已复制';
+
+    window.clearTimeout(resetTimer);
+    resetTimer = window.setTimeout(() => {
+      copyButton.classList.remove('is-copied');
+      copyButton.setAttribute('aria-label', `复制 ${copyButton.querySelector('span')?.textContent}：${copyButton.dataset.copy}`);
+      if (valueLabel && originalValue) valueLabel.textContent = originalValue;
+    }, 1500);
   });
 });
 
