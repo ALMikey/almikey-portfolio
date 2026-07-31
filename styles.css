@@ -506,11 +506,6 @@ h2 {
   transition: padding .22s ease, background .22s ease;
 }
 
-.skill-row:hover {
-  padding-inline: 14px;
-  background: rgba(166, 230, 92, .07);
-}
-
 .skill-label {
   display: flex;
   align-items: center;
