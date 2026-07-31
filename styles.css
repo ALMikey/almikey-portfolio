@@ -788,10 +788,15 @@ h2 {
 }
 
 .mechanics-group li::before {
-  content: "·";
-  color: var(--green);
-  font-weight: 800;
-  padding-right: 5px;
+  content: "";
+  width: 6px;
+  height: 6px;
+  display: inline-block;
+  margin-right: 9px;
+  vertical-align: middle;
+  background: var(--green);
+  box-shadow: 0 0 0 3px rgba(166, 230, 92, .18);
+  animation: indicator-pulse 1.8s ease-in-out infinite;
 }
 
 .contact {
