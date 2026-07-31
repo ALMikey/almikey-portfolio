@@ -22,6 +22,12 @@ assert.doesNotMatch(stylesheet, /\.github-grid\s*\{/, 'GitHub activity styles mu
 const featuredProjectRule = stylesheet.match(/\.project-card-featured\s*\{[^}]*\}/s)?.[0] ?? '';
 assert.doesNotMatch(featuredProjectRule, /background\s*:/, 'The featured project card must inherit the same transparency as other project cards.');
 assert.doesNotMatch(stylesheet, /\.project-card-featured:hover\s*\{/, 'The featured project card must inherit the standard hover transparency.');
+assert.doesNotMatch(html, /project-card-featured/, 'The first project card must not have a default featured border state.');
+
+const projectToplineRule = stylesheet.match(/\.project-topline\s*\{[^}]*\}/s)?.[0] ?? '';
+const projectTagRule = stylesheet.match(/\.project-tags span\s*\{[^}]*\}/s)?.[0] ?? '';
+assert.match(projectToplineRule, /font:\s*500 13px var\(--mono\);/, 'Project category labels must be 30% larger.');
+assert.match(projectTagRule, /font:\s*500 13px var\(--mono\);/, 'Project technology tags must be 30% larger.');
 
 const contactCardRule = stylesheet.match(/\.contact-link\s*\{[^}]*\}/s)?.[0] ?? '';
 const contactCardHoverRule = stylesheet.match(/\.contact-link:hover\s*\{[^}]*\}/s)?.[0] ?? '';

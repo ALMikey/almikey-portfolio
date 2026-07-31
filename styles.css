@@ -611,10 +611,6 @@ h2 {
   box-shadow: 0 22px 38px rgba(0, 0, 0, .32), 0 0 0 1px rgba(166, 230, 92, .16);
 }
 
-.project-card-featured {
-  border-color: #6c9445;
-}
-
 .project-record-toggle {
   align-self: flex-start;
   display: inline-flex;
@@ -668,7 +664,7 @@ h2 {
   align-items: center;
   justify-content: space-between;
   color: #b7c2af;
-  font: 500 10px var(--mono);
+  font: 500 13px var(--mono);
 }
 
 .project-topline svg {
@@ -702,7 +698,7 @@ h2 {
   padding: 5px 7px;
   background: rgba(255, 255, 255, .09);
   color: #dce5d5;
-  font: 500 10px var(--mono);
+  font: 500 13px var(--mono);
 }
 
 .mechanics {
