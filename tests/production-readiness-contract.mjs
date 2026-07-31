@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { existsSync, readFileSync } from 'node:fs';
 
 const html = readFileSync(new URL('../index.html', import.meta.url), 'utf8');
 const stylesheet = readFileSync(new URL('../styles.css', import.meta.url), 'utf8');
@@ -14,6 +14,15 @@ assert.doesNotMatch(
   html,
   /<script\b[^>]*\bsrc="https:\/\/unpkg\.com\//,
   'The page must not load executable scripts from unpkg.'
+);
+assert.match(
+  html,
+  /<link rel="icon" type="image\/png" href="assets\/almikey-nav-avatar\.png" \/>/,
+  'The favicon must use the maintained navigation avatar asset.'
+);
+assert.ok(
+  existsSync(new URL('../assets/almikey-nav-avatar.png', import.meta.url)),
+  'The favicon asset must exist in the deployed file set.'
 );
 assert.doesNotMatch(
   stylesheet,
