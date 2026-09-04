@@ -1,80 +1,117 @@
-# ALMikey 个人网站
+# ALMikey Portfolio
 
-静态单页作品集，用于展示 Minecraft 服务器开发能力、技术范围和项目参与方向。网站不包含账号、表单、数据库或后端接口，可部署到任意支持 HTTPS 的静态文件服务器。
+ALMikey 的个人作品集网站，围绕 Minecraft 服务器开发、玩法实现与技术协作展开。
 
-## 本地预览
+项目通过单页叙事呈现服务端能力、技术范围、项目参与方向和联系方式，并以 Minecraft 场景、深色控制台界面与荧光状态元素建立统一的视觉语言。网站不依赖后端服务，可直接部署到支持 HTTPS 的静态文件服务器。
 
-在此目录运行：
+## 项目定位
+
+这个网站既是一份个人开发者档案，也是一张面向服务器项目合作的在线名片。内容重点包括：
+
+- Minecraft 插件配置、插件开发与生态整合；
+- 服务端玩法设计、功能落地与长期维护；
+- 数据包、资源包及原版机制扩展；
+- 数据库、服务器环境和 Git 协作能力；
+- 项目参与方向与公开联系渠道。
+
+## 设计特色
+
+- **沉浸式首屏**：使用 Minecraft 场景图、状态标识和大标题建立鲜明的个人识别度。
+- **控制台式导航**：桌面端提供模块切换器与章节 HUD，滚动时同步显示当前位置。
+- **场景化模块**：不同内容区使用独立背景和色彩遮罩，形成连续的空间叙事。
+- **项目档案交互**：项目卡片支持展开，进一步展示职责、技术栈和关注重点。
+- **快捷联系方式**：点击联系卡片即可复制对应内容，并向辅助技术反馈复制结果。
+- **响应式体验**：针对桌面端和移动端分别设计导航、布局与内容密度。
+
+## 页面组成
+
+| 模块 | 内容 |
+| --- | --- |
+| 首页 | 个人定位、核心简介与当前专注方向 |
+| 服务端能力 | 插件配置、开发、玩法落地、问题调优和架构部署能力 |
+| 技术范围 | 原版机制、插件平台、数据库、操作系统与版本控制 |
+| 参与项目 | 服务器玩法系统、原版扩展数据包和资源包表现整合 |
+| 联系方式 | QQ、微信、GitHub、邮箱和 Discord |
+
+## 交互与体验
+
+网站使用原生 JavaScript 实现交互，没有引入前端框架：
+
+- 根据滚动位置更新顶部栏状态、模块切换器和章节 HUD；
+- 使用 `IntersectionObserver` 控制内容入场、首屏动画和背景图片延迟加载；
+- 为视觉模块提供轻量视差效果；
+- 支持项目档案展开与联系方式复制；
+- 移动端菜单支持点击外部关闭和 `Escape` 键退出；
+- 尊重 `prefers-reduced-motion` 设置，为减少动态效果的用户提供降级体验；
+- JavaScript 不可用时仍保留主要内容的可读性。
+
+## 技术实现
+
+| 类别 | 技术 |
+| --- | --- |
+| 页面结构 | HTML5、语义化标签、ARIA 属性 |
+| 样式与布局 | CSS3、Grid、Flexbox、响应式媒体查询 |
+| 页面交互 | 原生 JavaScript、Intersection Observer、Clipboard API |
+| 图标 | 本地托管的 Lucide Icons |
+| 字体 | Inter、Noto Sans SC、DM Mono，并提供系统字体回退 |
+| 测试 | Node.js 静态契约测试与语法检查 |
+
+## 项目结构
+
+```text
+almikey-portfolio/
+├─ assets/                 # 头像、皮肤与页面背景资源
+├─ tests/                  # 页面结构、样式和交互契约测试
+├─ vendor/                 # 本地托管的第三方前端资源
+├─ index.html              # 页面内容与语义结构
+├─ styles.css              # 视觉系统、布局、动效与响应式样式
+├─ app.js                  # 导航、观察器、复制和卡片交互
+└─ README.md               # 项目介绍与使用说明
+```
+
+## 本地运行
+
+项目没有构建步骤。进入项目目录后启动任意静态文件服务器，例如：
 
 ```powershell
 python -m http.server 4173
 ```
 
-访问 `http://127.0.0.1:4173`。不要使用此命令作为生产服务。
+随后访问 `http://127.0.0.1:4173`。
 
-## 验证
+> 此命令仅用于本地预览，不应作为生产服务使用。
 
-发布前运行以下检查：
+## 项目验证
+
+发布前执行全部契约测试：
 
 ```powershell
-node tests\technical-range-contract.mjs
-node tests\capabilities-contract.mjs
-node tests\control-room-contract.mjs
-node tests\contact-copy-contract.mjs
-node tests\mobile-menu-contract.mjs
-node tests\module-hover-contract.mjs
-node tests\module-switcher-contract.mjs
-node tests\hero-reentry-contract.mjs
-node tests\layout-contract.mjs
-node tests\production-readiness-contract.mjs
+Get-ChildItem tests\*-contract.mjs | Sort-Object Name | ForEach-Object {
+    node $_.FullName
+    if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+}
+```
+
+然后检查 JavaScript 语法及 Git 差异格式：
+
+```powershell
 node --check app.js
 git diff --check
 ```
 
-## 生产部署
+测试覆盖页面内容、布局约束、移动端菜单、模块切换、首屏动画、项目档案、联系方式复制及生产就绪要求。
 
-1. 使用 HTTPS，将站点根目录指向当前发布版本，而不是开发目录。
-2. 使用独立的版本目录，例如 `releases/2026-07-31/`，验证完成后再将 Web 根目录或 `current` 软链接切到新版本。保留上一个版本，以便回滚。
-3. `index.html` 使用 `no-cache`，确保每次发布都能重新验证入口文件。当前 CSS、JS 与图片使用固定文件名，不应设置为长期 `immutable` 缓存；后续引入内容哈希文件名后，才可为哈希资源设置一年缓存。
-4. 图标库已自托管在 `vendor/lucide.min.js`。Google Fonts 仍为外部字体服务；网络受限时会自动回退到系统字体。
-5. 首屏背景图会立即加载，其他模块背景在接近视口时加载。新增背景图片时，请保持合理尺寸，并优先提供 WebP 或 AVIF 版本。
+## 部署说明
 
-Nginx 示例，证书路径和域名需要替换为实际值：
+将仓库中的静态文件发布到 Nginx、Apache、GitHub Pages、Cloudflare Pages 或其他 HTTPS 静态托管服务即可。生产环境建议：
 
-```nginx
-server {
-    listen 443 ssl http2;
-    server_name example.com;
-    root /var/www/almikey/current;
-    index index.html;
+- 为 HTML 入口使用短缓存或 `no-cache`，保证发布后能够及时获取新版本；
+- 在资源文件加入内容哈希前，不要设置长期 `immutable` 缓存；
+- 配置 HSTS、CSP、`X-Content-Type-Options` 和 `Referrer-Policy` 等安全响应头；
+- 使用独立版本目录发布，验证完成后再切换线上入口，并保留上一版本用于回滚；
+- 检查 Google Fonts 的网络可用性，受限环境会自动回退到系统字体；
+- 新增图片时优先使用 WebP 或 AVIF，并控制尺寸与文件体积。
 
-    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
+## 内容与隐私
 
-    add_header Strict-Transport-Security "max-age=15552000" always;
-    add_header X-Content-Type-Options "nosniff" always;
-    add_header Referrer-Policy "strict-origin-when-cross-origin" always;
-    add_header Permissions-Policy "geolocation=(), camera=(), microphone=()" always;
-    add_header Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'; upgrade-insecure-requests" always;
-
-    location = /index.html {
-        expires -1;
-        try_files $uri =404;
-    }
-
-    location / {
-        try_files $uri $uri/ =404;
-    }
-
-    location ~* \.(?:css|js|png|jpe?g|webp|avif|svg|woff2?)$ {
-        expires 7d;
-        try_files $uri =404;
-    }
-}
-```
-
-若域名下没有其他子域名，再评估是否为 HSTS 增加 `includeSubDomains`。部署后在浏览器开发者工具检查控制台无错误，并确认所有本地资源返回 `200`。
-
-## 发布与回滚
-
-发布前确认联系信息和项目描述可公开，并检查联系方式复制功能。将新版本上传到新的发布目录，完成验证后再切换 `current`；若出现样式、资源或交互异常，立即切回上一个目录并清理 CDN 缓存。不要在未验证的情况下覆盖当前线上目录。
+项目不包含账号系统、表单、数据库或后端接口，也不会主动收集访问者信息。仓库中的个人介绍、项目描述和联系方式均会随静态文件公开，发布前应确认相关内容适合公开展示。
